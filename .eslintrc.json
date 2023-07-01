@@ -1,3 +1,6 @@
 {
-  "extends": "next/core-web-vitals"
+  "rules": {
+    "prettier/prettier": ["error", { "semi": false }]
+  },
+  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"]
 }
