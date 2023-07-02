@@ -1,30 +1,18 @@
-"use client"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { useState } from "react"
+'use client'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { useState } from 'react'
+import NavBar from '@/components/NavBar'
 
 export default function Home() {
   const router = useRouter()
-  const [location, setLocation] = useState("")
+  const [location, setLocation] = useState('')
 
   return (
     <main className="min-h-screen w-screen bg-gray-100">
       <main className="m-auto max-w-screen-2xl bg-white">
-        {/* NAVBAR */}
-        <nav className="flex justify-between bg-white p-2">
-          <Link href="/" className="text-2xl font-bold text-gray-700">
-            OpenTable
-          </Link>
-          <div>
-            <div className="flex">
-              <button className="mr-3 rounded border bg-blue-400 p-1 px-4 text-white">
-                Sign in
-              </button>
-              <button className="rounded border p-1 px-4">Sign up</button>
-            </div>
-          </div>
-        </nav>
-        {/* NAVBAR */}
+        <NavBar />
+
         <main>
           {/* HEADER */}
           <div className="h-64 bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2">
@@ -44,8 +32,8 @@ export default function Home() {
                 <button
                   className="rounded bg-red-600 px-9 py-2 text-white"
                   onClick={() => {
-                    if (location === "banana") return
-                    router.push("/search")
+                    if (location === 'banana') return
+                    router.push('/search')
                   }}
                 >
                   Let&apos;s go

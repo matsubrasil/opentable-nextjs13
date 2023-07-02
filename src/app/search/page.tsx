@@ -1,23 +1,10 @@
-import Link from "next/link"
+import NavBar from '@/components/NavBar'
 
 export default function SearchPage() {
   return (
     <main className="min-h-screen w-screen bg-gray-100">
       <main className="m-auto max-w-screen-2xl bg-white">
-        {/* NAVBAR */}
-        <nav className="flex justify-between bg-white p-2">
-          <Link href="/" className="text-2xl font-bold text-gray-700">
-            OpenTable
-          </Link>
-          <div>
-            <div className="flex">
-              <button className="mr-3 rounded border bg-blue-400 p-1 px-4 text-white">
-                Sign in
-              </button>
-              <button className="rounded border p-1 px-4">Sign up</button>
-            </div>
-          </div>
-        </nav>
+        <NavBar />
         {/* HEADER */}
         <div className="bg-gradient-to-r from-[#0f1f47] to-[#5f6984] p-2">
           <div className="m-auto flex justify-center py-3 text-left text-lg">

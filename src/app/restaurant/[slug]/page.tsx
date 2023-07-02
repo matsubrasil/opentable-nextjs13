@@ -1,24 +1,12 @@
-import Link from "next/link"
+import NavBar from '@/components/NavBar'
+import Link from 'next/link'
 
 export default function RestaurantDetailsPage() {
   return (
     <main className="min-h-screen w-screen bg-gray-100">
       <main className="m-auto max-w-screen-2xl bg-white">
-        {/* NAVBAR */}
-        <nav className="flex justify-between bg-white p-2">
-          <Link href="/" className="text-2xl font-bold text-gray-700">
-            OpenTable
-          </Link>
-          <div>
-            <div className="flex">
-              <button className="mr-3 rounded border bg-blue-400 p-1 px-4 text-white">
-                Sign in
-              </button>
-              <button className="rounded border p-1 px-4">Sign up</button>
-            </div>
-          </div>
-        </nav>
-        {/* NAVBAR */} {/* HEADER */}
+        <NavBar />
+        {/* HEADER */}
         <div className="h-96 overflow-hidden">
           <div className="flex h-full items-center justify-center bg-gradient-to-r from-[#0f1f47] to-[#5f6984] bg-center">
             <h1 className="captitalize text-shadow text-center text-7xl text-white">
@@ -167,7 +155,7 @@ export default function RestaurantDetailsPage() {
             </div>
           </div>
         </div>
-        {/* DESCRIPTION PORTION */} {/* RESERVATION CARD PORTION */}{" "}
+        {/* DESCRIPTION PORTION */} {/* RESERVATION CARD PORTION */}{' '}
         {/* RESERVATION
     CARD PORTION */}
       </main>

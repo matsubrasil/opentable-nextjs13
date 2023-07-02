@@ -1,6 +1,6 @@
 {
   "rules": {
-    "prettier/prettier": ["error", { "semi": false }]
+    "prettier/prettier": ["error", { "semi": false , "singleQuote": true}]
   },
   "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"]
 }
