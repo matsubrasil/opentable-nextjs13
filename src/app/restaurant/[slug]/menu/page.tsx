@@ -1,5 +1,5 @@
-import NavBar from '@/components/NavBar'
 import Link from 'next/link'
+import { NavBar } from '@/components/layout'
 
 export default function RestaurantMenuPage() {
   return (

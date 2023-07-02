@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function NavBar() {
+export function NavBar() {
   return (
     <nav className="flex justify-between bg-white p-2">
       <Link href="/" className="text-2xl font-bold text-gray-700">
