@@ -1,4 +1,4 @@
-export default function reservationPage() {
+export default function ReservationPage() {
   return (
     <main className="min-h-screen w-screen bg-gray-100">
       <main className="m-auto max-w-screen-2xl bg-white">

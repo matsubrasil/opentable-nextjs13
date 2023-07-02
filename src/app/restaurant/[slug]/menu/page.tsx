@@ -1,4 +1,4 @@
-export default function restaurantMenuPage() {
+export default function RestaurantMenuPage() {
   return (
     <main className="min-h-screen w-screen bg-gray-100">
       <main className="m-auto max-w-screen-2xl bg-white">
@@ -31,12 +31,10 @@ export default function restaurantMenuPage() {
             {/* RESTAURANT NAVBAR */}
             <nav className="flex border-b pb-2 text-reg">
               <a href="" className="mr-7">
-                {" "}
-                Overview{" "}
+                Overview
               </a>
               <a href="" className="mr-7">
-                {" "}
-                Menu{" "}
+                Menu
               </a>
             </nav>
             {/* RESTAURANT NAVBAR */} {/* MENU */}
