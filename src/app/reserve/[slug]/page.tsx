@@ -1,5 +1,12 @@
+import { Metadata } from 'next'
 import { ReserveHeader } from '@/components/layout'
 import { ReserveForm } from '@/components/ReserveForm'
+
+export const metadata: Metadata = {
+  title: 'Reserve at Milestone Grill (Toronto) | OpenTable',
+  description:
+    'restaurant reservations, online restaurant reservations, restaurant management software, opentable, open table',
+}
 
 export default function ReservationPage() {
   return (
