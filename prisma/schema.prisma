@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Restaurant {
+  id            Int      @id @default(autoincrement())
+  name          String
+  mainImage     String   @map("main_image")
+  images        String[]
+  description   String
+  openTime      String   @map("open_time")
+  closeTime     String   @map("close_time")
+  slug          String   @unique
+  categoryPrice PRICE    @map("category_price")
+
+  Item Item[]
+
+  locationId Int      @map("location_id")
+  location   Location @relation(fields: [locationId], references: [id])
+
+  cuisineId Int     @map("cuisine_id")
+  cuisine   Cuisine @relation(fields: [cuisineId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("restaurant")
+}
+
+model Item {
+  id          Int    @id @default(autoincrement())
+  name        String
+  price       String
+  description String
+
+  restaurantId Int        @map("restaurant_id")
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("item")
+}
+
+model Location {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  restaurants Restaurant[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("location")
+}
+
+model Cuisine {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  restaurants Restaurant[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("cuisine")
+}
+
+enum PRICE {
+  CHEAP
+  REGULAR
+  EXPENSIVE
+}
