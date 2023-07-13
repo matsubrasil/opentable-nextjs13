@@ -37,3 +37,6 @@ yarn-error.log*
 next-env.d.ts
 .vscode/settings.json
 downloads/4.1 html.zip
+
+# prisma migration
+prisma/migrations/**/*.*

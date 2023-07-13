@@ -25,3 +25,28 @@ source-code - folder "downloads"
 ### Components difference
 
 ![Components features](components_difference.png)
+
+### Seed
+
+Instalar e configurar package.json
+
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.21",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
+```
+
+Executar a carga
+
+```shell
+npx prisma db seed
+```
