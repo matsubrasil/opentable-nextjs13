@@ -8,10 +8,14 @@ export const metadata: Metadata = {
     'restaurant reservations, online restaurant reservations, restaurant management software, opentable, open table',
 }
 
-export default function RestaurantMenuPage() {
+export default function RestaurantMenuPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   return (
     <div className="w-[100%] rounded bg-white p-3 shadow">
-      <RestaurantNavBar />
+      <RestaurantNavBar slug={params.slug} />
       <Menu />
     </div>
   )
