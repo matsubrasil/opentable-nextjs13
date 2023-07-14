@@ -21,7 +21,7 @@ model Restaurant {
   slug          String   @unique
   categoryPrice PRICE    @map("category_price")
 
-  Item Item[]
+  items Item[]
 
   locationId Int      @map("location_id")
   location   Location @relation(fields: [locationId], references: [id])
