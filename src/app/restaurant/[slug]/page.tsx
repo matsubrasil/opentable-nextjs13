@@ -5,7 +5,7 @@ import { Rating } from '@/components/Rating'
 import { ReservationCard } from '@/components/ReservationCard'
 import { Reviews } from '@/components/Reviews'
 import { RestaurantNavBar, Title } from '@/components/layout'
-import prisma from '@/lib/prisma'
+import { prisma } from '@/lib/prisma'
 
 export const metadata: Metadata = {
   title: 'Milestone Grill (Toronto) | OpenTable',

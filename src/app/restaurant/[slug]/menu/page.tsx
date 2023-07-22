@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { RestaurantNavBar } from '@/components/layout'
 import { Menu } from '@/components/Menu'
-import prisma from '@/lib/prisma'
+import { prisma } from '@/lib/prisma'
 
 export const metadata: Metadata = {
   title: 'Menu of Milestone Grill (Toronto) | OpenTable',

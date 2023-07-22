@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout'
 import { RestaurantCard } from '@/components'
-import prisma from '@/lib/prisma'
+import { prisma } from '@/lib/prisma'
 import { Cuisine, Location, PRICE } from '@prisma/client'
 
 export type RestaurantCardType = {
