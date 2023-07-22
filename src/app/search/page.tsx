@@ -56,14 +56,42 @@ const fetchSearchRestaurantByCity = async (
   })
 }
 
+const fetchLocations = async () => {
+  return await prisma.location.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
+    orderBy: {
+      name: 'asc',
+    },
+  })
+}
+
+const fetchCuisines = async () => {
+  return await prisma.cuisine.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
+    orderBy: {
+      name: 'asc',
+    },
+  })
+}
+
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const restaurants = await fetchSearchRestaurantByCity(searchParams.city)
+
+  const locations = await fetchLocations()
+  const cuisines = await fetchCuisines()
+
   // console.log(restaurants)
   return (
     <>
       <SearchHeader />
       <div className="m-auto flex w-2/3 items-start justify-between py-4">
-        <SearchSideBar />
+        <SearchSideBar locations={locations} cuisines={cuisines} />
         <div className="w-5/6">
           {restaurants.length ? (
             <>
