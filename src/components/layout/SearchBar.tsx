@@ -16,11 +16,11 @@ export function SearchBar() {
         onChange={(e) => setLocation(e.target.value)}
       />
       <button
-        className="rounded bg-red-600 px-9 py-2 text-white"
+        className="rounded bg-red-600 px-9 py-2 text-white hover:bg-red-700"
         onClick={() => {
-          // if (location === '') return
-          console.log('location', location)
-          router.push(`/search?city=${location}`)
+          location.trim() === ''
+            ? router.push('/search')
+            : router.push(`/search?city=${location}`)
           setLocation('')
         }}
       >

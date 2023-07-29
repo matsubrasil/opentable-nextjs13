@@ -3,7 +3,6 @@ import { prisma } from '@/lib/prisma'
 import { Location, Cuisine, PRICE } from '@prisma/client'
 import { SearchHeader, SearchSideBar } from '@/components/layout'
 import { SearchRestaurantCard } from '@/components'
-import path from 'path'
 
 export const metadata: Metadata = {
   title: 'Search Restaurant OpenTable',
@@ -12,11 +11,13 @@ export const metadata: Metadata = {
 }
 interface SearchPageProps {
   searchParams: {
-    city: string
+    city?: string
+    cuisine?: string
+    price?: PRICE
   }
 }
 
-export interface RestaurantInfoBasic {
+export interface RestaurantInfoPage {
   id: number
   name: string
   mainImage: string
@@ -26,9 +27,16 @@ export interface RestaurantInfoBasic {
   slug: string
 }
 
-const fetchSearchRestaurantByCity = async (
+/***
+ * @name: fetchSearchRestaurantByCity
+ * @description: pesquisa os restaurantes de um local, mas se não passar nenhum parâmetro, a pesquisa retorna todos os restaurantes
+ */
+
+async function fetchSearchRestaurantByCity({
+  city,
+}: {
   city: string | undefined
-): Promise<RestaurantInfoBasic[]> => {
+}): Promise<RestaurantInfoPage[]> {
   const select = {
     id: true,
     name: true,
@@ -42,6 +50,16 @@ const fetchSearchRestaurantByCity = async (
   if (!city) {
     return prisma.restaurant.findMany({
       select,
+      orderBy: [
+        {
+          location: {
+            name: 'asc',
+          },
+        },
+        {
+          name: 'asc',
+        },
+      ],
     })
   }
   return prisma.restaurant.findMany({
@@ -56,6 +74,11 @@ const fetchSearchRestaurantByCity = async (
   })
 }
 
+/***
+ * @name: fetchLocations
+ * @description: pesquisa as localidades dos restaurantes
+ *
+ */
 const fetchLocations = async () => {
   return await prisma.location.findMany({
     select: {
@@ -67,7 +90,11 @@ const fetchLocations = async () => {
     },
   })
 }
-
+/***
+ * @name: fetchCuisines
+ * @description: pesquisa os restaurantes especializados em um tipo de cuisine
+ *
+ */
 const fetchCuisines = async () => {
   return await prisma.cuisine.findMany({
     select: {
@@ -81,17 +108,23 @@ const fetchCuisines = async () => {
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const restaurants = await fetchSearchRestaurantByCity(searchParams.city)
+  const restaurants = await fetchSearchRestaurantByCity({
+    city: searchParams.city,
+  })
 
   const locations = await fetchLocations()
   const cuisines = await fetchCuisines()
 
-  // console.log(restaurants)
+  console.log('searchParams', searchParams)
   return (
     <>
       <SearchHeader />
       <div className="m-auto flex w-2/3 items-start justify-between py-4">
-        <SearchSideBar locations={locations} cuisines={cuisines} />
+        <SearchSideBar
+          locations={locations}
+          cuisines={cuisines}
+          searchParams={searchParams}
+        />
         <div className="w-5/6">
           {restaurants.length ? (
             <>

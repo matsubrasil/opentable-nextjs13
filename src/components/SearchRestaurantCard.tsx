@@ -1,8 +1,8 @@
-import { RestaurantInfoBasic } from '@/app/search/page'
+import { RestaurantInfoPage } from '@/app/search/page'
 import { Price } from '@/components/Price'
 import Link from 'next/link'
 interface SearchRestaurantCardProps {
-  restaurant: RestaurantInfoBasic
+  restaurant: RestaurantInfoPage
 }
 export function SearchRestaurantCard({
   restaurant,
