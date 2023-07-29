@@ -21,7 +21,8 @@ model Restaurant {
   slug          String   @unique
   categoryPrice PRICE    @map("category_price")
 
-  items Item[]
+  items   Item[]
+  reviews Review[]
 
   locationId Int      @map("location_id")
   location   Location @relation(fields: [locationId], references: [id])
@@ -72,6 +73,42 @@ model Cuisine {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("cuisine")
+}
+
+model User {
+  id         Int    @id @default(autoincrement())
+  first_name String
+  last_name  String
+  city       String
+  password   String
+  email      String @unique
+  phone      String
+
+  reviews Review[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("user")
+}
+
+model Review {
+  id         Int    @id @default(autoincrement())
+  first_name String
+  last_name  String
+  text       String
+  rating     Float
+
+  restaurantId Int?        @map("restaurant_id")
+  restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
+
+  userId Int?  @map("user_id")
+  user   User? @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("review")
 }
 
 enum PRICE {
