@@ -172,7 +172,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const locations = await fetchLocations()
   const cuisines = await fetchCuisines()
 
-  console.log('searchParams', searchParams)
+  // console.log('searchParams', searchParams)
   return (
     <>
       <SearchHeader />
